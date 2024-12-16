@@ -53,6 +53,27 @@ These are called by different Agents in the application
 4. **Set up environment variables**:
     - Copy the [.env](http://_vscodecontentref_/13) file and update the values with your database and API credentials.
 
+5. The .env file
+
+```
+AZURE_OPENAI_ENDPOINT="https://<>.openai.azure.com/"
+AZURE_OPENAI_API_KEY=""
+AZURE_OPENAI_DEPLOYMENT_NAME="gpt-4o"
+AZURE_OPENAI_EMBEDDINGS_DEPLOYMENT_NAME="text-embedding-ada-002"
+API_VERSION="2023-08-01-preview"
+API_TYPE="azure"
+az_db_server = "<>.database.windows.net"
+az_db_database = "<>"
+az_db_username = "<>"
+az_db_password = "<>"
+
+
+ai_search_url = "https://<>.search.windows.net"
+ai_search_key = "<>"
+ai_index_name = "contoso-motocorp-index"
+ai_semantic_config = "contoso-motocorp-config"
+```
+
 ## Usage
 
 ### Running the Bot
