@@ -1,6 +1,6 @@
 # Contoso Motocorp Service Bot
 
-This repository contains the source code for the Contoso Motocorp Service Bot, implemented as a multi agent system using 'langGraph'.
+This repository contains the source code for the Contoso Motocorp Service Bot, implemented as a multi agent system using `langGraph`.
 It helps customers schedule service appointments, provide feedback, and answer queries related to their vehicles.
 
 ## Project Structure
@@ -23,6 +23,11 @@ It helps customers schedule service appointments, provide feedback, and answer q
 - **capture-service-rating.sql**: SQL script for the `InsertServiceFeedback` stored procedure.
 - **create_service_schedule_sp.sql**: SQL script for the `CreateServiceSchedule` stored procedure. 
 - **db-create.sql**: SQL script to create and populate the database tables that can be used to run and demo this application
+
+### Search data setup
+
+The folder documents contains a PDF which is the user manual of Hero Honda HF100 Bike from the internet. Multimodal data extraction was used to extract insights from the text and images in this document, and the resulting enriched textual data is generated, and saved to file 'heromotocorp-sample-understood.md'
+This could be uploaded to Azure AI Search, an index created and used in the application, as the basis on which customer queries on their product purchased can be answered
 
 ### Service Requests Directory
 
@@ -101,6 +106,8 @@ To set up the database, execute the SQL scripts in the scripts directory in the 
 - analyze_feedback_sp.sql: Creates the AnalyzeFeedback stored procedure.
 
 
+
+
 ### Tools and Utilities
 #### Database Tools
 
@@ -112,11 +119,11 @@ To set up the database, execute the SQL scripts in the scripts directory in the 
 
 ### Graph comprising the Agents
 
-bot-app-v1.py -> implements a simple, multi agent solution using 'langGraph'. Here the supervisor agent routes to the other agents, who merely use the tool and revert to the supervisor agent, before that is relayed to the user
+bot-app-v1.py -> implements a simple, multi agent solution using `langGraph`. Here the supervisor agent routes to the other agents, who merely use the tool and revert to the supervisor agent, before that is relayed to the user
 
 ![Contoso Motocorp Service Bot](graph_bot_app_v1.png)
 
 
-bot-app-v2.py -> Implements a full blown multi agent solution using 'langGraph'. This has been adapted based on a similar sample in the Travel domain [here](https://langchain-ai.github.io/langgraph/tutorials/customer-support/customer-support/#conversation).Here the supervisor agents routes to the other agents, each of which are powered by an LLM and can make decisions of their own. They choose to use the different tools they have access to, can respond to the user directly and not have to go through the supervisor, when in a context in the conversation. Each of the Agents have a system prompt that determines their behavior and purpose.
+bot-app-v2.py -> Implements a full blown multi agent solution using `langGraph`. This has been adapted based on a similar sample in the Travel domain [here](https://langchain-ai.github.io/langgraph/tutorials/customer-support/customer-support/#conversation).Here the supervisor agents routes to the other agents, each of which are powered by an LLM and can make decisions of their own. They choose to use the different tools they have access to, can respond to the user directly and not have to go through the supervisor, when in a context in the conversation. Each of the Agents have a system prompt that determines their behavior and purpose.
 
 ![Contoso Motocorp Service Bot](graph_bot_app_v2.png)
